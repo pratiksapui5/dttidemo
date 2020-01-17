@@ -1,0 +1,18 @@
+{
+	"DocumentTypes": [{
+		"DocTypeID": "0",
+        "DocTypeDesc": "Select"
+        
+    },{
+		"DocTypeID": "1",
+        "DocTypeDesc": "Document Type 1"
+        
+    },{
+    	"DocTypeID": "2",
+        "DocTypeDesc": "Document Type 2"
+    },{
+    	"DocTypeID": "3",
+        "DocTypeDesc": "Document Type 3"
+    }]
+    
+ }

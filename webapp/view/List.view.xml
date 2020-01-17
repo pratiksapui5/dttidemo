@@ -1,0 +1,159 @@
+<mvc:View controllerName="masspo.controller.List" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns="sap.m" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<layout:Grid class="sapUiSmallMarginTop" hSpacing="2" defaultSpan="L6 M6 S10">
+						<layout:content>
+							<VBox>
+								<Text text="Document Type : " class="doctxt"/>
+								<Select id="doctyp" change="handleDocTypeSearch" selectedKey="0" items="{ path: '/DocumentTypes'}" class="docbox" width="100%">
+									<items>
+										<core:Item key="{DocTypeID}" text="{DocTypeDesc}"/>
+									</items>
+								</Select>
+							
+								<!--<SearchField id="searchField" liveChange="handlePOSearch" placeholder="Search by PO Number" width="auto"/>-->
+								<layoutData>
+									<layout:GridData span="L4 M4 S8" linebreakL="false" linebreakM="false" linebreakS="false"/>
+								</layoutData>
+							</VBox>
+						</layout:content>
+					</layout:Grid>
+					<Table class="sapUiResponsiveMargin sapUiNoMarginTop" growing="true" growingScrollToLoad="false" id="table" growingThreshold="10"
+						mode="MultiSelect" noDataText="{worklistView]/tableNoDataText}" width="auto" headerText="po">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="tableHeader" text="List of Purchase Orders"/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="ponoColumn" mergeDuplicates="true">
+								<Text id="colPonumber" text="{i18n>TablePONumber}" class="ABC" width="25%"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="onPress1">
+								<cells>
+									<Panel class="sapUiContentPadding" headerText="1000001" id="panel1">
+										<content>
+											<Table class="sapUiResponsiveMargin sapUiNoMarginTop" noDataText="{worklistView]/tableNoDataText}" width="auto">
+												<columns>
+													<Column minScreenWidth="Tablet" visible="false" demandPopin="true" width="4rem">
+														<Text text="DocType Id"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" width="4rem">
+														<Text text="{i18n>TableMaterial}"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" width="4rem">
+														<Text text="{i18n>TablePlant}"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="4rem">
+														<Text text="{i18n>TableCurrentQty}"/>
+													</Column>
+													<Column hAlign="Left"  minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TablePreviousQty}"/>
+													</Column>
+													<Column hAlign="Left" minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TableCurrentPrice}"/>
+													</Column>
+													<Column hAlign="Left" minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TablePreviousPrice}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem type="Inactive">
+														<cells>
+															<Text visible="false" text="1"/>
+															<Text text="Material Desc 1"/>
+															<Text text="Plant 1"/>
+															<ObjectNumber number="100" unit="KG"/>
+															<ObjectNumber number="50" unit="KG"/>
+															<Text text="500.00"/>
+															<Text text="1000.00"/>
+														</cells>
+													</ColumnListItem>
+													<ColumnListItem type="Inactive">
+														<cells>
+															<Text visible="false" text="2"/>
+															<Text text="Material Desc 2"/>
+															<Text text="Plant 2"/>
+															<ObjectNumber number="1000" unit="KG"/>
+															<ObjectNumber number="500" unit="KG"/>
+															<Text text="5000.00"/>
+															<Text text="10000.00"/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</content>
+									</Panel>
+								
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem type="Navigation" press="onPress2">
+								<cells>
+									<Panel class="sapUiContentPadding" headerText="1000002" id="panel2">
+										<content>
+											<Table class="sapUiResponsiveMargin sapUiNoMarginTop" noDataText="{worklistView]/tableNoDataText}" width="auto">
+												<columns>
+													<Column minScreenWidth="Tablet" visible="false" demandPopin="true" width="4rem">
+														<Text text="DocType Id"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" width="4rem">
+														<Text text="{i18n>TableMaterial}"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" width="4rem">
+														<Text text="{i18n>TablePlant}"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="4rem">
+														<Text text="{i18n>TableCurrentQty}"/>
+													</Column>
+													<Column hAlign="Left"  minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TablePreviousQty}"/>
+													</Column>
+													<Column hAlign="Left" minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TableCurrentPrice}"/>
+													</Column>
+													<Column hAlign="Left" minScreenWidth="Tablet" width="4rem">
+														<Text text="{i18n>TablePreviousPrice}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem type="Inactive">
+														<cells>
+															<Text visible="false" text="2"/>
+															<Text text="Material Desc 1"/>
+															<Text text="Plant 1"/>
+															<ObjectNumber number="100" unit="KG"/>
+															<ObjectNumber number="50" unit="KG"/>
+															<Text text="500.00"/>
+															<Text text="1000.00"/>
+														</cells>
+													</ColumnListItem>
+													
+												</items>
+											</Table>
+										</content>
+									</Panel>
+								
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar>
+						<content>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://accept" id="approve" press="onApprove" text="Approve" type="Accept"/>
+							<Button icon="sap-icon://decline" press="onReject" text="Reject" type="Reject"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
